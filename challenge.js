@@ -57,7 +57,7 @@ function getNumber (){
        resolve(num)
      }
      
-     // habría que averiguar un if que dé error si el número no se encuentra entre 0 y 10
+     // habría que averiguar un if que dé error si el número no se encuentra entre 0 y 15. Igual con un while o un do while
 
      else {
       reject ('Tienes que introducir un número del 1 al 15: ')
@@ -120,19 +120,30 @@ switch (numberFromConsole) {
 
 // ### 6- Mostrar por consola todos los datos de los alumnos que son chicas.
   case 6:
-    console.log ('Oye que bieeeen 6')
+    let mujeres = students.filter( students => students.gender === 'female')
+
+    console.log(mujeres)
 
   break;
 
 // ### 7- Mostrar por consola el número de chicos y chicas que hay en la clase.
   case 7:
-    console.log ('Oye que bieeeen 7')
-
+    
+    let mujeres1 = students.filter( students => students.gender === 'female')
+    let hombres = students.filter( students => students.gender === 'male')
+    
+    console.log('Número de mujeres: ' + mujeres1.length)
+    console.log('Número de hombres: ' + hombres.length )
   break;
 
 // ### 8- Mostrar true o false por consola si todos los alumnos de la clase son chicas.
   case 8:
-    console.log ('Oye que bieeeen 8')
+  
+  const isfemale = students.every(function (gender) {
+    return gender === 'female'
+  })
+  
+  console.log(isfemale)
 
   break;
 
