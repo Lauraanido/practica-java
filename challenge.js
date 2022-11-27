@@ -23,6 +23,13 @@ const students = [{
     gender: 'female',
     name: 'isabel'
   }
+,
+  {
+    age: 24,
+    examScores: [],
+    gender: 'male',
+    name: 'victor'
+  }
 ]
   
   const availableMaleNames = ['pepe', 'juan', 'victor', 'Leo', 'francisco', 'carlos'];
@@ -149,7 +156,20 @@ switch (numberFromConsole) {
 
 // ### 9- Mostrar por consola los nombres de los alumnos que tengan entre 20 y 25 años.
   case 9:
-    console.log ('Oye que bieeeen 9')
+  
+    let range = {
+      bajo: 20,
+      alto: 25
+    };
+  
+    let between = students.filter(function(students) {
+      return students.age >= this.bajo && students.age <= this.alto;
+    }, range)
+
+  function getname() {
+    between.forEach(students => { console.log(students.name)}) 
+  }
+  getname()
 
   break;
 
@@ -161,7 +181,11 @@ switch (numberFromConsole) {
 
 // ¡OJO!, el nombre y el género tienen que ir acordes.
   case 10:
-    console.log ('Oye que bieeeen 10')
+    
+
+  
+  
+  console.log ('Oye que bieeeen 10')
 
   break;
 
@@ -169,20 +193,36 @@ switch (numberFromConsole) {
 // ¡OJO!, si varias personas de la clase comparten la edad más baja, cualquiera de ellos es una respuesta válida.
   case 11:
 
-    console.log ('Oye que bieeeen 11')
+    let lista = students.sort((a, b) => a.age - b.age); // creo una lista de las edades en orden ascendente
+    
+    let youngest = lista[0]
+    
+    console.log (youngest.name)
 
     break;
 
 // ### 12- Mostrar por consola la edad media de todos los alumnos de la clase.
   case 12:
-    console.log ('Oye que bieeeen 12')
+  
+  var allages = students.map(age => (age.age));
+
+  const average = allages.reduce((a, b) => a + b, 0) / allages.length;
+  
+  console.log('Aquí están todas las edades: ' +  allages)
+  console.log('Y la media de las edades es ' + average)
 
       break;
 
 // ### 13- Mostrar por consola la edad media de las chicas de la clase.
   case 13:
 
-    console.log ('Oye que bieeeen 13')
+  let mujereslista = students.filter( students => students.gender === 'female')
+
+  var allagesmujeres = mujereslista.map(age => (age.age));
+
+  const averagemujeres = allagesmujeres.reduce((a, b) => a + b, 0) / allagesmujeres.length
+
+  console.log('La media de edad de las mujeres es ' + averagemujeres)  
 
     break;
 
@@ -196,7 +236,21 @@ switch (numberFromConsole) {
 // ### 15- Ordenar el array de alumnos alfabéticamente según su nombre.  
 case 15:
 
-  console.log ('Oye que bieeeen 15')
+  let Alphabetically = students.sort((a, b) => {
+    const nameA = a.name.toUpperCase(); 
+    const nameB = b.name.toUpperCase(); 
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+  
+    
+    return 0;
+  });
+
+  console.log (Alphabetically)
 
   break;
 
