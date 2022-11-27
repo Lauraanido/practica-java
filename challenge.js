@@ -58,15 +58,15 @@ function isInit(str){
 
 function getNumber (){
   const promise = new Promise((resolve, reject) => {
-    rl.question('Introduce un número del 1 al 15:' , (num) => {
-      rl.pause();
+    console.log('1- Mostrar en formato de tabla todos los alumnos.\n2- Mostrar por consola la cantidad de alumnos que hay en clase.\n3- Mostrar por consola todos los nombres de los alumnos.\n4- Eliminar el último alumno de la clase.\n5- Eliminar un alumno aleatoriamente de la clase.\n6- Mostrar por consola todos los datos de los alumnos que son chicas.\n7- Mostrar por consola el número de chicos y chicas que hay en la clase.\n8- Mostrar true o false por consola si todos los alumnos de la clase son chicas.\n9- Mostrar por consola los nombres de los alumnos que tengan entre 20 y 25 años.\n10- Añadir un alumno nuevo.\n11- Mostrar por consola el nombre de la persona más joven de la clase.\n12- Mostrar por consola la edad media de todos los alumnos de la clase.\n13- Mostrar por consola la edad media de las chicas de la clase.\n14- Añadir nueva nota a los alumnos por cada alumno de la clase\n15- Ordenar el array de alumnos alfabéticamente según su nombre.' )
     
+    rl.question('Introduce un número del 1 al 15 de las anteriores opciones : ' , (num) => {
+      rl.pause();
+      
       if (isInit (num)) {
        num = Number.parseInt(num)
        resolve(num)
      }
-     
-     // habría que averiguar un if que dé error si el número no se encuentra entre 0 y 15. Igual con un while o un do while
 
      else {
       reject ('Tienes que introducir un número del 1 al 15: ')
@@ -77,7 +77,17 @@ function getNumber (){
   return promise;
 }
 
-const numberFromConsole = await getNumber();
+const numberFromConsole = await getNumber()
+
+async function numberConsole() {
+  let getNumber 
+    do {
+          getNumber()
+          const numberFromConsole = await getNumber()
+          
+
+      } while (numberFromConsole <= 0 && numberFromConsole > 15)
+  }
 
 function calculateRandomNumber(min, max) {
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
@@ -111,7 +121,7 @@ switch (numberFromConsole) {
   case 4:
   
   students.pop();
-  console.log(students.table)
+  console.log(students)
     
 
   break;
@@ -278,7 +288,7 @@ switch (numberFromConsole) {
   
   
   console.log('Incompleto ')
-  
+
     break;
 
 // ### 15- Ordenar el array de alumnos alfabéticamente según su nombre.  
