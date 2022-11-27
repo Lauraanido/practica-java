@@ -36,8 +36,11 @@ const students = [{
   const availableFemaleNames = ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'virginia'];
   const availableGenders = ['male', 'female'];
   
+import { Console } from 'console';
 import { resolve } from 'path';
 import readline from 'readline';
+
+
 
 // Configuramos la consola para pedir los datos
 
@@ -181,11 +184,49 @@ switch (numberFromConsole) {
 
 // ¡OJO!, el nombre y el género tienen que ir acordes.
   case 10:
-    
+  
 
+      // Random género 
+  const randomGender = Math.floor(Math.random() * availableGenders.length);
+  var GenderValue = availableGenders[randomGender]
+
+    // Random nombre chica 
+  const random = Math.floor(Math.random() * availableFemaleNames.length);
+  var femaleName = availableFemaleNames[random]
+
+    // Random nombre chico 
+    const randomM = Math.floor(Math.random() * availableMaleNames.length);
+  var MaleName = availableMaleNames[randomM]
   
-  
-  console.log ('Oye que bieeeen 10')
+  function getNameforPush (randomGender) {
+    if (randomGender === 'female') {
+      return femaleName
+      
+    }
+    else {
+      return MaleName
+      
+    }
+  }
+
+  let newname = getNameforPush()
+
+  function calculateRandomNumber(min, max) {
+    const randomNumber = Math.floor(Math.random() * (max - min)) + min;
+    return randomNumber;
+  }
+
+ let randomAge = calculateRandomNumber(20, 50)
+
+ let my_student ={}
+
+  my_student.age = randomAge
+  my_student.examScores = []
+  my_student.gender = GenderValue
+  my_student.name = newname
+
+  students.push(my_student)
+  console.log(students)
 
   break;
 
