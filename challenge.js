@@ -36,8 +36,7 @@ const students = [{
   const availableFemaleNames = ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'virginia'];
   const availableGenders = ['male', 'female'];
   
-import { Console } from 'console';
-import { resolve } from 'path';
+
 import readline from 'readline';
 
 
@@ -80,7 +79,10 @@ function getNumber (){
 
 const numberFromConsole = await getNumber();
 
-
+function calculateRandomNumber(min, max) {
+  const randomNumber = Math.floor(Math.random() * (max - min)) + min;
+  return randomNumber;
+}
 
 
 // Requisitos indispensables
@@ -211,10 +213,7 @@ switch (numberFromConsole) {
 
   let newname = getNameforPush()
 
-  function calculateRandomNumber(min, max) {
-    const randomNumber = Math.floor(Math.random() * (max - min)) + min;
-    return randomNumber;
-  }
+ 
 
  let randomAge = calculateRandomNumber(20, 50)
 
@@ -270,8 +269,16 @@ switch (numberFromConsole) {
 // ### 14- Añadir nueva nota a los alumnos. Por cada alumno de la clase, tendremos que calcular una nota de forma aleatoria(número entre 0 y 10) y añadirla a su listado de notas.
   case 14:
 
-    console.log ('Oye que bieeeen 14')
-
+  
+  let randomNota = calculateRandomNumber(0,10)
+  
+  // for each student push de randomNota 
+  
+  student.examScores = randomNota
+  
+  
+  console.log('Incompleto ')
+  
     break;
 
 // ### 15- Ordenar el array de alumnos alfabéticamente según su nombre.  
